@@ -1,0 +1,6 @@
+- Name: py-bind
+  command: /home/alex/.macros/py-bind
+  trigger: ctrl+p
+- Name: alejandro
+  command: idle
+  trigger: ctrl+i

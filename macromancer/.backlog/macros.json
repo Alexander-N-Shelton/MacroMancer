@@ -1,0 +1,29 @@
+{
+    "actions": [
+        {
+            "action": "scroll", 
+            "position": "(1414, 460)", 
+            "scroll": 1, 
+            "macro_time": 2.6891
+        },
+
+        {
+            "action": "scroll", 
+            "position": "(1414, 460)", 
+            "scroll": -1, 
+            "macro_time": 2.7395
+        },
+        {
+            "action": "move", 
+            "position": "(1414, 456)", 
+            "macro_time": 2.7897
+        },
+
+        {
+            "action": "key", 
+            "key": "ctrl", 
+            "event_type": "down", 
+            "macro_time": 8.5569
+        }
+    ]
+}

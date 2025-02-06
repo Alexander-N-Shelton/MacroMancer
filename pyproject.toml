@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# Note: This project requires the following system packagess:
+# - xbindkeys
+# - xdotool
+# - x11-utils
+name = "MacroMancer"
+version = "0.0.1"
+requires-python = ">=3.10"
+authors = [
+  { name="Alexander Shelton", email="alexander.nathan.shelton@outlook.com" },
+]
+license = { text = "GNU General Public License v3 or later" }
+readme = {file = "README.md", content-type = "text/markdown"}
+description = "A CLI application for managing keyboard and mouse bindings."
+dependencies = [
+    "pyfiglet",
+    "rich",
+    "InquirerPy",
+    "PyYaml", 
+    "pynput"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience  :: Linux Users",
+    "Topic :: Key/Mouse Bindings and Macros",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+
+]
+
+[project.urls]
+Repository = "https://github.com/Alexander-N-Shelton/MacroMancer"
+Issues = "https://github.com/Alexander-N-Shelton/MacroMancer/issues"
+
+[project.scripts]
+macromancer = "macromancer.main:main"

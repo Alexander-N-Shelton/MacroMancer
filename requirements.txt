@@ -1,0 +1,14 @@
+evdev==1.8.0
+inquirerpy==0.3.4
+markdown-it-py==3.0.0
+mdurl==0.1.2
+pfzy==0.3.4
+prompt_toolkit==3.0.50
+pyfiglet==1.0.2
+Pygments==2.19.1
+pynput==1.7.7
+python-xlib==0.33
+PyYAML==6.0.2
+rich==13.9.4
+six==1.17.0
+wcwidth==0.2.13
