@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 # core/device_manager.py
 import yaml
-import logging
+import os
 
 from rich.table import Table
 
 from macromancer.utils import console, update_xbindkeys, apply_xbindkeys
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename="macromancer_error.log", level=logging.ERROR)
 
 class DeviceManager:
     """
@@ -24,7 +21,9 @@ class DeviceManager:
         Args:
             file_path (str): Path to the YAML configuration file.
         """
-        self.file_path = file_path
+        path = os.path.abspath(os.path.dirname(__file__))
+        config_path = os.path.join(path, 'config')
+        self.file_path = os.path.join(config_path, file_path)
         self.bindings: list
         self.load_config()
 
@@ -124,7 +123,6 @@ class DeviceManager:
                         return self.bindings
             except KeyError as ke:
                 print("There is no binding by that name")
-                logging.error(f"Failed to delete binding: {ke}")
         else:
             console.print("There are no saved bindings.")
 

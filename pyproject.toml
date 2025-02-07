@@ -9,13 +9,6 @@ build-backend = "setuptools.build_meta"
 # - x11-utils
 name = "MacroMancer"
 version = "0.0.1"
-requires-python = ">=3.10"
-authors = [
-  { name="Alexander Shelton", email="alexander.nathan.shelton@outlook.com" },
-]
-license = { text = "GNU General Public License v3 or later" }
-readme = {file = "README.md", content-type = "text/markdown"}
-description = "A CLI application for managing keyboard and mouse bindings."
 dependencies = [
     "pyfiglet",
     "rich",
@@ -23,6 +16,17 @@ dependencies = [
     "PyYaml", 
     "pynput"
 ]
+requires-python = ">=3.10, <3.13"
+authors = [
+  { name="Alexander Shelton", email="alexander.nathan.shelton@outlook.com" },
+]
+maintainers = [
+  { name="Alexander Shelton", email="alexander.nathan.shelton@outlook.com" },
+]
+description = "A CLI application for managing keyboard and mouse bindings."
+license = { text = "GNU General Public License v3 or later" }
+readme = {file = "README.md", content-type = "text/markdown"}
+keywords = ["bindings", "keyboard", "mouse", "macros"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience  :: Linux Users",

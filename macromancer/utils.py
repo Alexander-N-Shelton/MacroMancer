@@ -61,6 +61,8 @@ def capture_keys(mode:str) -> str:
             key = key[0]
         key_codes.append(key)
     key_codes = '+'.join(key_codes)
+    if '+esc' == key_codes[-4:]:
+        key_codes = key_codes[:-4]
     return key_codes
 
 def capture_mouse_button() -> int:
@@ -113,7 +115,9 @@ def keyboard_config() -> list:
     Returns:
         list: The formatted binding strings.
     """
-    file_path = "config/keyboard.yaml"
+    path = os.path.abspath(os.path.dirname(__file__))
+    config_path = os.path.join(path, 'config')
+    file_path = os.path.join(config_path, "keyboard.yaml")
     key_map = build_keycode_map()
     stream = open(file_path, 'r')
     bindings = yaml.safe_load(stream)
@@ -149,7 +153,9 @@ def mouse_config() -> list:
     Returns:
         list: The formatted bindings.
     """
-    file_path = "config/mouse.yaml"
+    path = os.path.abspath(os.path.dirname(__file__))
+    config_path = os.path.join(path, 'config')
+    file_path = os.path.join(config_path, "mouse.yaml")
     stream = open(file_path, 'r')
     bindings = yaml.safe_load(stream)
     stream.close()
@@ -167,7 +173,7 @@ def mouse_config() -> list:
             new_bindings.append(new_binding)
     return new_bindings
 
-# Special key mappings for keys that are represented 
+# Special key mappings for keys that are represented
 # differently in xmodmap than in pynput.
 special_keys = {
     "!": "exclam",
@@ -308,8 +314,3 @@ def apply_xbindkeys() -> None:
     """Kills and then restarts xbindkeys."""
     subprocess.run(['killall', 'xbindkeys'], stdout=False)
     subprocess.run(['xbindkeys'])
-
-if __name__ == "__main__":
-    kcm = build_keycode_map()
-    print(kcm)
-    print('esc' in kcm)

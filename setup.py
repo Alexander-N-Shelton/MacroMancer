@@ -34,5 +34,9 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
     ],
-    python_requires=">=3.10",
+    python_requires=">=3.10, <3.13",
+    package_data={
+        'macromancer': ['docs/*.md', 'config/*.yaml'],
+    },
+    include_package_data=True,
 )

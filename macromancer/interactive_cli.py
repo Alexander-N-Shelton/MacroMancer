@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import logging
+import os
 
 from pyfiglet import Figlet
 from rich.prompt import Prompt, Confirm
@@ -10,9 +10,6 @@ from InquirerPy.base.control import Choice
 
 from macromancer.device_manager import DeviceManager
 from macromancer.utils import capture_keys, capture_mouse_button, is_valid_command
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename="macromancer_error.log", level=logging.ERROR)
 # =========================================================================== #
 class InteractiveCLI:
     """
@@ -40,8 +37,8 @@ class InteractiveCLI:
         self.f = Figlet()
         self.console = Console(style='blue')
         self.managers = {
-            'key': DeviceManager('macromancer/config/keyboard.yaml'),
-            'mouse': DeviceManager('macromancer/config/mouse.yaml')
+            'key': DeviceManager('keyboard.yaml'),
+            'mouse': DeviceManager('mouse.yaml')
         }
         self.display_welcome_message()
 
@@ -138,28 +135,6 @@ class InteractiveCLI:
         mode = inquirer.select(message="Select a key recording mode: ", choices=mode_choices, multiselect=False, border=True).execute()
         return mode
 
-    def record_input(self, bind_type) -> str | int:  # Captures input based on the binding type.
-        """
-        Captures input based on the binding type.
-
-        For 'key', it prompts for the recording mode and captures key input.
-        For 'mouse', it captures mouse button input.
-
-        Args:
-            bind_type (str): The type of binding ('key' or 'mouse').
-
-        Returns:
-            The captured trigger input.
-            list : keyboard keys captured
-            int : button press captured
-        """
-        if bind_type == 'key':
-            mode = self.ask_mode()
-            trigger = capture_keys(mode)
-        elif bind_type == 'mouse':
-            trigger = capture_mouse_button()
-        return trigger
-
     def return_to_menu(self) -> None:  # Prompt user to return to main menu.
         """
         Waits for the user to press Enter before returning to the main menu.
@@ -191,7 +166,11 @@ class InteractiveCLI:
         name = self.ask_name(manager)
         if name is not None:
             if Confirm.ask(f"Change Trigger for {name}?", default=True):
-                new_trigger = self.record_input(bind_type)
+                if bind_type == 'key':
+                    mode = self.ask_mode()
+                    new_trigger = capture_keys(mode)
+                elif bind_type == 'mouse':
+                    new_trigger = capture_mouse_button()
             else:
                 new_trigger = None
             if Confirm.ask(f"Change Command for {name}?", default=True):
@@ -225,7 +204,11 @@ class InteractiveCLI:
             command = Prompt.ask("Enter a command for your binding ")
             if is_valid_command(command):
                 break
-        trigger = self.record_input(bind_type)
+        if bind_type == 'key':
+            mode = self.ask_mode()
+            trigger = capture_keys(mode)
+        elif bind_type == 'mouse':
+            trigger = capture_mouse_button()
         manager.add_binding(name, command, trigger)
         self.console.print(f"Adding {bind_type} binding:\nName: {name}\nCommand: {command}\nTrigger: {trigger}.")
         self.return_to_menu()
@@ -285,7 +268,8 @@ class InteractiveCLI:
 
         Reads and renders the help markdown from 'docs/help.md' and waits for user input to return to the main menu.
         """
-        with open("docs/help.md") as readme:
+        docs = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'docs')    
+        with open(os.path.join(docs, 'help.md')) as readme:
             markdown = Markdown(readme.read())
             self.console.print(markdown)
         self.return_to_menu()
@@ -296,7 +280,6 @@ class InteractiveCLI:
 
         Allows the user to view either the warranty disclaimer or copyright conditions.
         """
-
         license_warranty = '''
    Disclaimer of Warranty.
 

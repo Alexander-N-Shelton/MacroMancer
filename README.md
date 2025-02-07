@@ -2,15 +2,7 @@
 
 ## A CLI application.
 
-Most of the documentation for using this application can be found in the man pages.
 
-
-### Installation
-After intallation run: `xmodmap -pke 1> config/key_mappings.txt`
-
-### Usage
-
-### Required Dependencies
 ## System Dependencies
 
 Before installing MacroMancer, please ensure that the following system packages are installed:
@@ -19,6 +11,7 @@ Before installing MacroMancer, please ensure that the following system packages 
 - **xdotool**
 - **x11-utils**
 
+### Installation
 *Debian-based*
 `sudo apt install xbindkeys x11-utils xdotool`
 
@@ -30,3 +23,5 @@ Before installing MacroMancer, please ensure that the following system packages 
 
 *Arch Linux / Manjaro*
 `sudo pacman -S xbindkeys xorg-xev xdotool`
+
+### Usage
