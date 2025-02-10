@@ -1,6 +1,6 @@
 # MacroMancer
 
-## A CLI application.
+## A Linux CLI application for Keyboard and Mouse Customization.
 
 
 ## System Dependencies
@@ -34,17 +34,26 @@ Before installing MacroMancer, please ensure that the following system packages 
 `sudo zypper install xbindkeys xev xdotool`
 
 ---
-After installing the necessary system dependencies, create a virtual environment using python:
-`python -m venv .venv`
-Activate the virtual environment:
+Download the 
+After installing the necessary system dependencies:
+1. Create a virtual environment using python:
+```Bash
+python -m venv .venv
+```
+2. Activate the virtual environment:
 Linux:
-`source .venv/bin/activate`
+```Bash
+source .venv/bin/activate
+```
 Windows:
-`.venv/Scripts/activate`
-
+```PowerShell
+.venv/Scripts/activate
+```
 Pip:
-`cd dist/`
-`pip install MacroMancer`
+```
+cd dist/
+pip install MacroMancer
+```
 
 
 ### Usage

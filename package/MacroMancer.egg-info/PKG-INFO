@@ -1,0 +1,92 @@
+Metadata-Version: 2.2
+Name: MacroMancer
+Version: 0.0.1
+Summary: A CLI application for managing keyboard and mouse bindings.
+Home-page: https://github.com/Alexander-N-Shelton/MacroMancer
+Author: Alexander N. Shelton
+Author-email: Alexander Shelton <alexander.nathan.shelton@outlook.com>
+Maintainer-email: Alexander Shelton <alexander.nathan.shelton@outlook.com>
+License: GNU General Public License v3 or later
+Project-URL: Repository, https://github.com/Alexander-N-Shelton/MacroMancer
+Project-URL: Issues, https://github.com/Alexander-N-Shelton/MacroMancer/issues
+Keywords: bindings,keyboard,mouse,macros
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience  :: Linux Users
+Classifier: Topic :: Key/Mouse Bindings and Macros
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Requires-Python: >=3.10, <3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyfiglet
+Requires-Dist: rich
+Requires-Dist: InquirerPy
+Requires-Dist: PyYaml
+Requires-Dist: pynput
+Dynamic: author
+Dynamic: home-page
+Dynamic: requires-python
+
+# MacroMancer
+
+## A Linux CLI application for Keyboard and Mouse Customization.
+
+
+## System Dependencies
+
+Before installing MacroMancer, please ensure that the following system packages are installed:
+
+- **xbindkeys**
+- **xdotool**
+- **x11-utils**
+
+## Python Dependencies
+
+- **pyfiglet==1.0.2**
+- **inquirerpy==0.3.4**
+- **PyYAML==6.0.2**
+- **rich==13.9.4**
+- **prompt_toolkit==3.0.50**
+- **pynput==1.7.7**
+
+### Installation
+*Arch Linux / Manjaro*
+`sudo pacman -S xbindkeys xorg-xev xdotool`
+
+*Debian-based*
+`sudo apt install xbindkeys x11-utils xdotool`
+
+*Fedora*
+`sudo dnf install xbindkeys xorg-x11-utils xdotool`
+
+*openSUSE*
+`sudo zypper install xbindkeys xev xdotool`
+
+---
+Download the 
+After installing the necessary system dependencies:
+1. Create a virtual environment using python:
+```Bash
+python -m venv .venv
+```
+2. Activate the virtual environment:
+Linux:
+```Bash
+source .venv/bin/activate
+```
+Windows:
+```PowerShell
+.venv/Scripts/activate
+```
+Pip:
+```
+cd dist/
+pip install MacroMancer
+```
+
+
+### Usage
+
+
+### Testing
+Tests must be run from the root directory to be able to follow the correct file paths.
