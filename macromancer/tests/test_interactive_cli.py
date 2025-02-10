@@ -25,7 +25,7 @@ def mock_inquirer_select(monkeypatch):
     in a given test scenario.
     """
     def _set_return_value(value):
-        # We'll patch inquirer.select() so .execute() returns 'value'
+        # Use patch inquirer.select() so .execute() returns 'value'
         def fake_select(*args, **kwargs):
             class FakeSelect:
                 def execute(self):
@@ -51,7 +51,7 @@ def test_exit_from_main_menu(mock_device_manager, monkeypatch):
     then chooses 'exit' from the main menu.
     We expect the program to call quit() and raise SystemExit.
     """
-    # We'll simulate two user inputs:
+    # Simulate two user inputs:
     # 1) Press Enter at the welcome
     # 2) Then "exit" at the main menu (from inquirer.select)
     # 
@@ -75,7 +75,7 @@ def test_main_menu_show(mock_device_manager, monkeypatch):
     # 1) Press Enter at the welcome prompt (instead of typing 'q')
     monkeypatch.setattr("rich.console.Console.input", lambda *args, **kwargs: "")
 
-    # We'll iterate over three responses for "inquirer.select().execute()":
+    # Iterate over three responses for "inquirer.select().execute()":
     # 1) 'show' -> main_menu
     # 2) 'key'  -> ask_type inside show()
     # 3) 'exit' -> main_menu called again, to exit the loop
@@ -94,14 +94,14 @@ def test_main_menu_show(mock_device_manager, monkeypatch):
     with pytest.raises(SystemExit):
         InteractiveCLI()
 
-    # If we got here without a KeyError or StopIteration,
+    # if test got here without a KeyError or StopIteration,
     # it means we successfully handled 'show', then 'key', then 'exit'.
 
 def test_add_binding(mock_device_manager, monkeypatch):
-    # 1) Skip welcome screen by pressing Enter (empty string).
+    # 1) skip welcome screen by pressing Enter (empty string).
     monkeypatch.setattr("rich.console.Console.input", lambda *args, **kwargs: "")
 
-    # 2) We'll need three returns from inquirer.select:
+    # 2) We need three returns from inquirer.select:
     #    - "add" (main menu choice)
     #    - "key" (which bind type)
     #    - "combo" (which recording mode)
@@ -113,7 +113,7 @@ def test_add_binding(mock_device_manager, monkeypatch):
                 return next(select_responses)
         return FakeSelect()
 
-    # Patch inquirer.select so every time it's called, it returns 
+    # Use patch inquirer.select so every time it's called, it returns 
     # a FakeSelect object whose execute() yields the next item above.
     monkeypatch.setattr("InquirerPy.inquirer.select", fake_select)
 
@@ -134,7 +134,7 @@ def test_add_binding(mock_device_manager, monkeypatch):
             #  - Prompt.ask("Enter a name...") -> "test_binding"
             #  - Prompt.ask("Enter a command...") -> "ls"
             #  - ask_mode() -> "combo"
-            #  - capture_keys() -> "ctrl+a+esc"
+            #  - capture_keys() -> "ctrl+shift+a"
             #  - Then it finishes adding and goes back to the main menu loop.
             #  - Finally it exits the program.
             cli = InteractiveCLI()

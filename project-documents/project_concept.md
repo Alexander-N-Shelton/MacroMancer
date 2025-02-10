@@ -3,7 +3,7 @@
 
 ## I. General Information
 
-**Project name:**  Keyboard and Mouse Customization Software for Linux  
+**Project name:**  MacroMancer
 **Requestor name:** Alexander Shelton  
 **Requestor’s contact information:** alexandershelton@student.purdueglobal.edu  
 **Project number:** 15984
