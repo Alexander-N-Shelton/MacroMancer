@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# read_shorts.py
 shortcuts_file = 'config/shortcut_scheme.txt'
 fhand = open(shortcuts_file, 'r')
 lines = fhand.readlines()

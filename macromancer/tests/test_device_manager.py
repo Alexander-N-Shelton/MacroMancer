@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # tests/test_device_manager.py
 import pytest
 import warnings

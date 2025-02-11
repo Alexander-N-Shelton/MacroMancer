@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# help.py
 from rich.markdown import Markdown
 from macromancer.utils import console
 

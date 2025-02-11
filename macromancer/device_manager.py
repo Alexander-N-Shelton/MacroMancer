@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# core/device_manager.py
+# device_manager.py
 import yaml
 import os
 

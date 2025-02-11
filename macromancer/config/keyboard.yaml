@@ -1,6 +1,3 @@
-- Name: py-bind
-  command: /home/alex/.macros/py-bind
-  trigger: ctrl+p
-- Name: alejandro
-  command: idle
-  trigger: ctrl+i
+- Name: open firefox
+  command: firefox
+  trigger: ctrl+f

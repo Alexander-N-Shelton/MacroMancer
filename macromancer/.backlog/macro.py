@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# macro.py
 import argparse
 from macro_input import *
 

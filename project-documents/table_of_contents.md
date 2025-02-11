@@ -1,6 +1,6 @@
-# MacroMancer Table of Contents Markdown
+# MacroMancer Table of Contents 
 
-## Markdown
+## Project Documents
 - [Project Concept](project_concept.md)
 - [Project Charter](project_charter.md)
 - [Project Scope](project_scope.md)
@@ -9,15 +9,31 @@
 - [Change Request](change_request.md)
 - [Product Update Email](product_update_email.md)
 
-## PDF
-- [Project Charter](project_charter.pdf)
-- [Project Scope](project_scope.pdf)
-- [Risk Assessment](risk_assessment.pdf)
-- [Work Breakdown Structure](work_breakdown_structure.pdf)
-- [Project Concept](project_concept.pdf)
-- [Change Request](change_request.pdf)
-- [Product Update Email](product_update_email.pdf)
+## MacroMancer Package:
+- [MacroMancer Wheel](../package/dist/MacroMancer-0.0.1-py3-none-any.whl)
+- [MacroMancer Compressed Archive](../package/dist/macromancer-0.0.1.tar.gz)
+- [MacroMancer Package Info](../package/MacroMancer.egg-info/PKG-INFO)
 
-## Media 
-- [Product Review (mp3)](product_review_recording.mp3)
-- [Product Review (PowerPoint)](product_review_presentation.pdf)
+## Project Source Code
+### Python Files:
+- [main](../macromancer/main.py)
+- [device_manager](../macromancer/device_manager.py)
+- [utils](../macromancer/utils.py)
+- [interactive_cli](../macromancer/interactive_cli.py)
+- [help](../macromancer/help.py)
+
+### Configuration Files (YAML):
+- [keyboard](../macromancer/config/keyboard.yaml)
+- [mouse](../macromancer/config/keyboard.yaml)
+
+### Documentation:
+- [README](../README.md)
+- [help](../macromancer/docs/help.md)
+
+### License:
+- [License](../LICENSE)
+
+### Test:
+- [test_device_manager](../macromancer/tests/test_device_manager.py)
+- [test_interactive_cli](../macromancer/tests/test_interactive_cli.py)
+- [test_utils](../macromancer/tests/test_utils.py)

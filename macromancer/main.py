@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# main.py
 '''    
     MacroMancer. A CLI application for binding keys and buttons.
     Copyright (C) 2025 Alexander N. Shelton

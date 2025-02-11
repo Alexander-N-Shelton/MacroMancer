@@ -2,6 +2,9 @@
 
 ## A Linux CLI application for Keyboard and Mouse Customization.
 
+## Table of Contents
+- [Table of Contents](project-documents/table_of_contents.md)
+
 
 ## System Dependencies
 
@@ -14,6 +17,8 @@ Before installing MacroMancer, please ensure that the following system packages 
 
 ## Python Dependencies
 
+The following packages are required by MacroMancer:
+
 - **pyfiglet==1.0.2**
 - **inquirerpy==0.3.4**
 - **PyYAML==6.0.2**
@@ -21,10 +26,13 @@ Before installing MacroMancer, please ensure that the following system packages 
 - **prompt_toolkit==3.0.50**
 - **pynput==1.7.7**
 
-### Installation
+### Installation Instructions
+
+Install system dependencies.
+
 *Arch Linux / Manjaro*
 ```bash
-sudo pacman -S xbindkeys xorg-xev xdotool
+sudo pacman -S xbindkeys xorg-xev xdotool gcc
 ```
 
 *Debian-based*
@@ -37,31 +45,32 @@ sudo apt install xbindkeys x11-utils xdotool python3.12-venv python3-dev build-e
 sudo dnf install xbindkeys xev xdotool gcc python3.12-devel
 ```
 
-*openSUSE*
-```bash
-sudo zypper install xbindkeys xev xdotool
-```
-
 ---
-Depending on your distro, you may have to download a few additonal python packages, if not already installed.
-Debian/Ubuntu:
+1. Download the the either the .tar.gz or .whl
+    - If you download the .tar.gz:
+        - Decompress the .tar.gz file using:
+        - `tar -xvzf macromancer-0.0.1.tar.gz`
+        - Then finish follow the instructions below.
+    - If you downloaded the .whl file, just make make a note of the path to the download, as you will need it for the installation. 
+2. After installing the necessary system dependencies create a sample .xbindkeysrc file by running:
 ```bash
-sudo apt install 
+xbindkeys -d > ~/.xbindkeysrc   # Creating a sample configuration file in    
 ```
-Download the 
-After installing the necessary system dependencies:
-1. Create a virtual environment using python:
+3. Create a virtual environment using python:
 ```bash
 python -m venv .venv
 ```
-2. Activate the virtual environment:
+4. Activate the virtual environment:
 ```bash
 source .venv/bin/activate
 ```
-Pip:
+5. Install with Pip:
 ```bash
-cd dist/
-pip install MacroMancer
+pip install /path/to/download/MacroMancer-0.0.1-py3-none-any.whl
+```
+6. Run MacroMancer program.
+```bash
+macromancer
 ```
 
 ### Usage
@@ -81,5 +90,6 @@ The Main Menu has a list of different options:
 - **License**: View licensing details.
 - **Exit**: Quit the application.
 
-### Testing
-Tests must be run from the root directory to be able to follow the correct file paths.
+### Issues
+If you encounter any issues please submit them in the issues tab:
+[Issues](https://github.com/Alexander-N-Shelton/MacroMancer/issues)

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# utils.py
 import os
 import shutil
 import subprocess
@@ -11,7 +12,7 @@ from rich.console import Console
 
 console = Console()
 
-def capture_keys(mode:str) -> str:
+def capture_keys(mode:str) -> str:  # Captures the keycode(s) for keys pressed.
     """Captures the keycode(s) for keys pressed by the user.
 
     Args:
@@ -65,7 +66,7 @@ def capture_keys(mode:str) -> str:
         key_codes = key_codes[:-4]
     return key_codes
 
-def capture_mouse_button() -> int:
+def capture_mouse_button() -> int:  # Captures a single mouse button press.
     """
     Listens for a single mouse button press and returns its mapped code.
     
@@ -96,7 +97,7 @@ def capture_mouse_button() -> int:
         
     return clicked_button_code[0]
 
-def is_valid_command(command: str) -> bool:
+def is_valid_command(command: str) -> bool:  # Checks if a command is valid.
     """
     Tests if a command is valid.
 
@@ -108,7 +109,7 @@ def is_valid_command(command: str) -> bool:
     """
     return shutil.which(command) is not None
 
-def keyboard_config() -> list:
+def keyboard_config() -> list:  # Configures saved keyboard configurations formatted for xbindkeys.
     """
     Configures saved keyboard configurations formatted for xbindkeys.
     
@@ -144,7 +145,7 @@ def keyboard_config() -> list:
             new_bindings.append(new_binding)
     return new_bindings
 
-def mouse_config() -> list:
+def mouse_config() -> list:  # Configures saved mouse configurations formatted for xbindkeys.
     """
     Configures the saved mouse configurations by formatting
     them in a way that can be used by `xbindkeys` including
@@ -233,7 +234,7 @@ special_keys = {
     'print_screen': "Print",
 }
 
-def build_keycode_map() -> dict:
+def build_keycode_map() -> dict:  # Maps pynput keys to xmodmap.
     """
     Maps pynput keys to xmodmap by parsing `xmodmap -pke` output.
     
@@ -268,7 +269,7 @@ def build_keycode_map() -> dict:
 
     return key_map
 
-def update_xbindkeys() -> None:
+def update_xbindkeys() -> None:  # Writes the current configurations to `~/.xbindkeysrc`.
     """
     Writes the current configurations to `~/.xbindkeysrc`.
     """
@@ -278,19 +279,17 @@ def update_xbindkeys() -> None:
     marker_start = "### MacroMancer Start ###"
     marker_end   = "### MacroMancer End ###"
 
-    # Gather your custom config lines (including start/end markers).
-    # For illustration, just some placeholders:
+    # Gather custom config lines (including start/end markers).
     custom_config = [f"{marker_start}\n"]
     for k in kc:
         custom_config.append(k)
     for m in mc:
         custom_config.append(m)
     custom_config.append(f"{marker_end}")
-    # Read the existing file
     with open(path, "r") as f:
         lines = f.readlines()
 
-    # Remove any old MacroMancer block
+    # Remove old MacroMancer block
     updated_lines = []
     in_block = False
     for line in lines:
@@ -310,7 +309,7 @@ def update_xbindkeys() -> None:
     with open(path, "w") as f:
         f.writelines(updated_lines)
 
-def apply_xbindkeys() -> None:
+def apply_xbindkeys() -> None:  # Kills and then restarts xbindkeys.
     """Kills and then restarts xbindkeys."""
     subprocess.run(['killall', 'xbindkeys'], stdout=False)
     subprocess.run(['xbindkeys'])

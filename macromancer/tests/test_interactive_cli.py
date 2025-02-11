@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # tests/test_interactive_cli.py
 import pytest
 import warnings
