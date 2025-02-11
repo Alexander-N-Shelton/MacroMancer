@@ -1,7 +1,7 @@
 # MacroMancer
 
 ## A Linux CLI application for Keyboard and Mouse Customization.
-
+![](project-documents/main_menu.png)
 ## Table of Contents
 - [Table of Contents](project-documents/table_of_contents.md)
 
@@ -89,7 +89,9 @@ The Main Menu has a list of different options:
 - **Help**: Display this help information.
 - **License**: View licensing details.
 - **Exit**: Quit the application.
-
+![](project-documents/help.png)
+![](project-documents/show_bindings.png)
+![](project-documents/add_binding.png)
 ### Issues
 If you encounter any issues please submit them in the issues tab:
 [Issues](https://github.com/Alexander-N-Shelton/MacroMancer/issues)
