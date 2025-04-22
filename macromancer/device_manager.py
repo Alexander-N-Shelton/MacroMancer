@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# device_manager.py
+# macromancer/device_manager.py
+
 import yaml
 import os
 

@@ -1,5 +1,0 @@
-pyfiglet
-rich
-InquirerPy
-PyYaml
-pynput

@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# utils.py
+# macromancer/utils.py
+
 import os
 import shutil
 import subprocess

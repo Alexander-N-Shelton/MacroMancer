@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# interactive_cli.py
+# macromancer/interactive_cli.py
+
 import os
 
 from pyfiglet import Figlet
@@ -11,7 +11,7 @@ from InquirerPy.base.control import Choice
 
 from macromancer.device_manager import DeviceManager
 from macromancer.utils import capture_keys, capture_mouse_button, is_valid_command
-# =========================================================================== #
+
 class InteractiveCLI:
     """
     InteractiveCLI provides a simple command-line interface that welcomes the user,
@@ -232,7 +232,7 @@ class InteractiveCLI:
             else:
                 self.console.print("No bindings were deleted.")
         else:
-            self
+            self.console.print("Please select a binding name to delete.")
         self.return_to_menu()
     
     def save(self) -> None: # Saves the configured bindings.
