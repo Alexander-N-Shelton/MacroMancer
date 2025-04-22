@@ -152,6 +152,8 @@ class DeviceManager:
         Writes the updated bindings list back to the YAML file specified by file_path.
         """
         file = open(self.file_path, 'w')
+        print("Saving to file...")
+        print(self.bindings)
         yaml.dump(self.bindings, file)
         file.close()
     

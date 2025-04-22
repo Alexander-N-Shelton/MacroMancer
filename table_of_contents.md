@@ -40,8 +40,6 @@
 
 ## Media
 
-### [Click Here to Watch a Demo](assets/videos/recording_macromancer.mp4)
-
 ---
 
 ### Main Menu

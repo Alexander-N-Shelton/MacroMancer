@@ -133,6 +133,8 @@ def keyboard_config() -> list:  # Configures saved keyboard configurations forma
             keys = trigger.split('+')
             for key in keys:
                 key_code = key_map.get(key)
+                if key_code is None:
+                    key_code = key_map.get(key.lower())
                 key_code = str(key_code)
                 keycodes.append(key_code)
             codes = "+".join(keycodes)
@@ -269,7 +271,7 @@ def build_keycode_map() -> dict:  # Maps pynput keys to xmodmap.
 
     return key_map
 
-def update_xbindkeys() -> None:  # Writes the current configurations to `~/.xbindkeysrc`.
+def update_xbindkeys() -> None:
     """
     Writes the current configurations to `~/.xbindkeysrc`.
     """
@@ -279,17 +281,20 @@ def update_xbindkeys() -> None:  # Writes the current configurations to `~/.xbin
     marker_start = "### MacroMancer Start ###"
     marker_end   = "### MacroMancer End ###"
 
-    # Gather custom config lines (including start/end markers).
+    # Build new MacroMancer block
     custom_config = [f"{marker_start}\n"]
-    for k in kc:
-        custom_config.append(k)
-    for m in mc:
-        custom_config.append(m)
-    custom_config.append(f"{marker_end}")
-    with open(path, "r") as f:
-        lines = f.readlines()
+    custom_config.extend(kc)
+    custom_config.extend(mc)
+    custom_config.append(f"{marker_end}\n")
 
-    # Remove old MacroMancer block
+    # Read current config
+    try:
+        with open(path, "r") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        lines = []
+
+    # Strip out old MacroMancer block
     updated_lines = []
     in_block = False
     for line in lines:
@@ -302,10 +307,11 @@ def update_xbindkeys() -> None:  # Writes the current configurations to `~/.xbin
         if not in_block:
             updated_lines.append(line)
 
-    # Now append the new MacroMancer block
+    # Insert the new block at the end
+    updated_lines.append("\n")  # Optional: ensure spacing
     updated_lines.extend(custom_config)
 
-    # Write everything back
+    # Write the new config
     with open(path, "w") as f:
         f.writelines(updated_lines)
 
@@ -313,3 +319,6 @@ def apply_xbindkeys() -> None:  # Kills and then restarts xbindkeys.
     """Kills and then restarts xbindkeys."""
     subprocess.run(['killall', 'xbindkeys'], stdout=False)
     subprocess.run(['xbindkeys'])
+
+kc_map = build_keycode_map()
+print(kc_map.get('i'))
